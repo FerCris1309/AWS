@@ -1,119 +1,125 @@
-# ☁️ Estudos AWS – Fernanda Cristina Cruz Onil
+☁️ Estudos AWS – Fernanda Cristina Cruz Onil
+🧠 Sobre este repositório
 
-## 🧠 Sobre este repositório
-Este repositório foi criado para registrar meu aprendizado e práticas sobre **Amazon Web Services (AWS)** durante o programa **Santander Code Girls – 2025**, em parceria com a **DIO**.  
-Os estudos atuais estão **baseados nas aulas, exemplos e desafios práticos** apresentados ao longo do curso.
+Repositório criado para documentar meu aprendizado e práticas sobre Amazon Web Services (AWS) durante o programa Santander Code Girls – 2025, em parceria com a DIO.
 
-Aqui organizo meus **resumos, anotações, exercícios e projetos práticos** realizados em cada módulo.
+Aqui registro meus resumos, anotações, exercícios e projetos práticos desenvolvidos em cada módulo do curso, com foco em entendimento técnico e aplicação prática.
 
-## 🗂️ Resumo dos Tópicos – Visão Geral AWS
+🗂️ Resumo dos Tópicos
+📖 1. Introdução à AWS e Conceitos Básicos
 
-### 📖 1. Introdução à AWS e Conceitos Básicos
-- História da **Amazon** e da criação da **AWS (2006)**.  
-- A AWS é a principal **provedora de serviços em nuvem** do mercado.  
-- Oferece mais de **200 serviços globais** que atendem desde startups até grandes corporações.  
-- Enfatiza o aprendizado “**hands-on**” (prático) para domínio das ferramentas.
+História da Amazon e origem da AWS (2006).
 
----
+A AWS é a maior provedora de serviços em nuvem do mundo.
 
-### 🌍 2. Infraestrutura Global
-- A **infraestrutura da AWS** é composta por:
-  - **Regiões (Regions):** áreas geográficas que agrupam vários data centers.
-  - **Zonas de Disponibilidade (AZs):** data centers independentes, mas interligados para garantir alta disponibilidade.
-- Atualmente, a AWS possui:
-  - **33 regiões** e **105 zonas de disponibilidade**,  
-  - com planos para expansão em **Alemanha, Malásia, Nova Zelândia e Tailândia**.
-- Disponibiliza latência inferior a **10 milissegundos** em implantações locais.  
-- 🌐 Mais detalhes: [Infraestrutura Global AWS](https://aws.amazon.com/pt/about-aws/global-infrastructure)
+Oferece mais de 200 serviços globais, atendendo desde startups até grandes corporações.
 
----
+Enfatiza o aprendizado “hands-on” (prático), essencial para o domínio das ferramentas.
 
-### 💰 3. Modelo de Negócio da AWS
-- Baseado em **pagamento conforme o uso (Pay-as-you-go)**.  
-- Transição do modelo **CAPEX** (investimento em infraestrutura própria) para **OPEX** (custos operacionais sob demanda).  
-- Escalabilidade e flexibilidade: paga-se apenas pelos recursos utilizados.  
-- Oferece serviços desde **computação e armazenamento** até **Machine Learning, IoT e Analytics**.
+🌍 2. Infraestrutura Global
 
----
+Estrutura composta por:
 
-### 🧩 4. Modelos de Serviço em Nuvem
-| Modelo | Nome | Responsabilidade do Usuário | Exemplo |
-|:--|:--|:--|:--|
-| **IaaS** | Infraestrutura como Serviço | Controle total sobre o ambiente (ex: EC2, VPC) | EC2 |
-| **PaaS** | Plataforma como Serviço | A AWS gerencia a infraestrutura e o sistema operacional | Elastic Beanstalk |
-| **SaaS** | Software como Serviço | Usuário apenas utiliza a aplicação | Amazon Chime, WorkMail |
+Regiões (Regions): agrupam vários data centers.
 
-Cada modelo oferece diferentes níveis de **controle, flexibilidade e responsabilidade**.
+Zonas de Disponibilidade (AZs): data centers independentes, conectados para garantir alta disponibilidade.
 
----
+Atualmente:
 
-### 🚀 5. Diferenciais da AWS
-- **Inovação constante** e atualização frequente de serviços.  
-- **Escalabilidade global** e segurança avançada.  
-- **Modelo flexível** que se adapta a qualquer porte de empresa.  
-- Ecossistema robusto de **parceiros, certificações e treinamentos**.
+33 regiões e 105 zonas de disponibilidade,
 
-🧠 Resumo – Computação em Nuvem com Amazon EC2
+com expansão prevista para Alemanha, Malásia, Nova Zelândia e Tailândia.
+
+Latência inferior a 10 ms em implantações locais.
+
+🔗 Infraestrutura Global AWS
+
+💰 3. Modelo de Negócio da AWS
+
+Baseado em pagamento conforme o uso (Pay-as-you-go).
+
+Transição do modelo CAPEX → OPEX, reduzindo custos com infraestrutura física.
+
+Escalabilidade e flexibilidade: paga-se apenas pelo que é consumido.
+
+Serviços que vão de computação e armazenamento a Machine Learning, IoT e Analytics.
+
+🧩 4. Modelos de Serviço em Nuvem
+Modelo	Nome	Responsabilidade do Usuário	Exemplo
+IaaS	Infraestrutura como Serviço	Controle total sobre o ambiente	EC2, VPC
+PaaS	Plataforma como Serviço	AWS gerencia infraestrutura e SO	Elastic Beanstalk
+SaaS	Software como Serviço	Usuário apenas consome o app	WorkMail, Chime
+
+Cada modelo oferece níveis distintos de controle, flexibilidade e responsabilidade.
+
+🚀 5. Diferenciais da AWS
+
+💡 Inovação constante e atualizações frequentes.
+
+🌍 Escalabilidade global e segurança avançada.
+
+🔄 Modelo flexível, adaptável a empresas de qualquer porte.
+
+🎓 Ecossistema robusto de parceiros, certificações e treinamentos.
+
+☁️ Computação em Nuvem com Amazon EC2
 📍 Módulo 2 – EC2: Elastic Compute Cloud
 
-Serviço da AWS que fornece máquinas virtuais (instâncias) com sistemas operacionais Windows ou Linux.
+Serviço que disponibiliza máquinas virtuais (instâncias) com Windows ou Linux.
 
-Cada instância EC2 é composta por CPU, memória, disco, rede e SO.
+Cada instância EC2 possui CPU, memória, disco, rede e sistema operacional.
 
-Classificação IaaS (Infraestrutura como Serviço) — o usuário é responsável pelos aplicativos, dados e conexões.
+Classificada como IaaS — o usuário é responsável pelos dados, aplicativos e conexões.
 
 ⚙️ Escolha da Instância
 
-Escolher corretamente garante eficiência, escalabilidade e economia.
+A escolha correta garante eficiência, escalabilidade e economia.
 
-É essencial entender as necessidades da aplicação antes de definir o tipo de instância.
+Baseia-se nas necessidades específicas da aplicação.
 
 🔐 Configuração e Segurança
 
-Utiliza imagens de máquina (AMIs) no momento da criação.
+Uso de AMIs (Amazon Machine Images) no momento da criação.
 
-Segurança configurada por grupos de segurança (firewall), controlando portas, protocolos e IPs de origem.
+Controle de acesso via Security Groups (firewall), definindo portas, protocolos e IPs.
 
 💡 Otimização de Recursos na AWS
-💰 Objetivo da Otimização
+💰 Objetivo
 
-Reduzir custos e melhorar desempenho dos sistemas em nuvem.
-
-Otimizar é sinônimo de poupar recursos sem comprometer a performance.
+Reduzir custos e aumentar o desempenho das soluções na nuvem.
+Otimizar = usar recursos de forma inteligente sem desperdiçar.
 
 ⏸️ Boas Práticas
 
-Desligar instâncias não utilizadas, principalmente em ambientes de desenvolvimento e teste.
+Desligar instâncias não utilizadas (ambientes de teste/dev).
 
-Remover recursos ociosos (como volumes, snapshots e IPs elásticos).
+Remover recursos ociosos, como volumes e IPs elásticos.
 
 📈 Escalabilidade
 
-Escalonamento vertical: aumentar/reduzir capacidade (vCPUs, memória, disco) dentro da mesma instância.
+Vertical: ajustar capacidade (vCPU, RAM, disco) da instância.
 
-Escalonamento horizontal: adicionar/remover instâncias conforme a demanda.
+Horizontal: adicionar/remover instâncias conforme a demanda.
 
-💵 Modelos de Compra de Instâncias
-
-Sob Demanda: Pagamento por hora, ideal para cargas irregulares ou testes.
-
-Reservadas: Desconto maior, porém requer compromisso de uso por 1 ou 3 anos.
-
-Spot: Até 90% mais baratas, mas podem ser interrompidas pela AWS a qualquer momento.
-
+💵 Modelos de Compra
+Tipo	Descrição	Ideal Para
+Sob Demanda	Pagamento por hora	Cargas irregulares e testes
+Reservadas	Pagamento fixo anual com desconto	Uso contínuo
+Spot	Desconto de até 90%, mas pode ser interrompida	Processos não críticos
 🚀 Conclusão
 
-O EC2 é a base da computação em nuvem da AWS, oferecendo flexibilidade e controle total sobre os recursos.
-O uso inteligente e otimizado das instâncias traz redução de custos, alta disponibilidade e escalabilidade eficiente.
+O EC2 é a base da computação em nuvem da AWS.
+Usar instâncias de forma otimizada permite redução de custos, alta disponibilidade e escalabilidade eficiente.
 
-## ✨ Próximos Passos
+✨ Próximos Passos
 
-- Revisar **simulados e quizzes da DIO**  
-- Aprofundar estudos de **segurança, faturamento e monitoramento**  
-- Criar resumo visual com **principais ícones e serviços AWS**  
-- Praticar comandos básicos no **AWS CLI**
+📘 Revisar simulados e quizzes da DIO.
 
----
+🔒 Aprofundar estudos em segurança, faturamento e monitoramento.
 
-> 💬 *“A nuvem não é o futuro — é o presente em constante evolução.”*  
-> — *Fernanda Cristina Cruz Onil*
+🧭 Criar resumo visual com principais ícones e serviços AWS.
+
+💻 Praticar comandos básicos no AWS CLI.
+
+💬 “A nuvem não é o futuro — é o presente em constante evolução.”
+— Fernanda Cristina Cruz Onil
