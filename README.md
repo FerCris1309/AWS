@@ -29,8 +29,8 @@ Repositório criado para documentar meu aprendizado e práticas sobre Amazon Web
 
       Modelo	Nome	                        Responsabilidade do Usuário          Exemplo
       IaaS	  Infraestrutura como Serviço	  Controle total sobre o ambiente	     EC2, VPC
-      PaaS	  Plataforma como Serviço	AWS   gerencia infraestrutura e SO  	     Elastic Beanstalk
-      SaaS	  Software como Serviço       	Usuário apenas consome o app	       WorkMail, Chime
+      PaaS	  Plataforma como Serviço AWS     Gerencia infraestrutura e SO  	     Elastic Beanstalk
+      SaaS	  Software como Serviço       	  Usuário apenas consome o app	         WorkMail, Chime
 
       Cada modelo oferece níveis distintos de controle, flexibilidade e responsabilidade.
 
