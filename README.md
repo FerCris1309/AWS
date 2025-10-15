@@ -81,9 +81,9 @@ Repositório criado para documentar meu aprendizado e práticas sobre Amazon Web
   💵 Modelos de Compra
 
      Tipo	        Descrição	                                      Ideal Para
-     Sob Demanda	Pagamento por hora	                            Cargas irregulares e testes
-     Reservadas	  Pagamento fixo anual com desconto	              Uso contínuo
-     Spot	        Desconto de até 90%, mas pode ser interrompida	Processos não críticos
+     Sob Demanda	Pagamento por hora	                              Cargas irregulares e testes
+     Reservadas	    Pagamento fixo anual com desconto	              Uso contínuo
+     Spot	        Desconto de até 90%, mas pode ser interrompida	  Processos não críticos
 
  🚀 Conclusão
      O EC2 é a base da computação em nuvem da AWS.
