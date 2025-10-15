@@ -53,6 +53,58 @@ Cada modelo oferece diferentes níveis de **controle, flexibilidade e responsabi
 - **Modelo flexível** que se adapta a qualquer porte de empresa.  
 - Ecossistema robusto de **parceiros, certificações e treinamentos**.
 
+🧠 Resumo – Computação em Nuvem com Amazon EC2
+📍 Módulo 2 – EC2: Elastic Compute Cloud
+
+Serviço da AWS que fornece máquinas virtuais (instâncias) com sistemas operacionais Windows ou Linux.
+
+Cada instância EC2 é composta por CPU, memória, disco, rede e SO.
+
+Classificação IaaS (Infraestrutura como Serviço) — o usuário é responsável pelos aplicativos, dados e conexões.
+
+⚙️ Escolha da Instância
+
+Escolher corretamente garante eficiência, escalabilidade e economia.
+
+É essencial entender as necessidades da aplicação antes de definir o tipo de instância.
+
+🔐 Configuração e Segurança
+
+Utiliza imagens de máquina (AMIs) no momento da criação.
+
+Segurança configurada por grupos de segurança (firewall), controlando portas, protocolos e IPs de origem.
+
+💡 Otimização de Recursos na AWS
+💰 Objetivo da Otimização
+
+Reduzir custos e melhorar desempenho dos sistemas em nuvem.
+
+Otimizar é sinônimo de poupar recursos sem comprometer a performance.
+
+⏸️ Boas Práticas
+
+Desligar instâncias não utilizadas, principalmente em ambientes de desenvolvimento e teste.
+
+Remover recursos ociosos (como volumes, snapshots e IPs elásticos).
+
+📈 Escalabilidade
+
+Escalonamento vertical: aumentar/reduzir capacidade (vCPUs, memória, disco) dentro da mesma instância.
+
+Escalonamento horizontal: adicionar/remover instâncias conforme a demanda.
+
+💵 Modelos de Compra de Instâncias
+
+Sob Demanda: Pagamento por hora, ideal para cargas irregulares ou testes.
+
+Reservadas: Desconto maior, porém requer compromisso de uso por 1 ou 3 anos.
+
+Spot: Até 90% mais baratas, mas podem ser interrompidas pela AWS a qualquer momento.
+
+🚀 Conclusão
+
+O EC2 é a base da computação em nuvem da AWS, oferecendo flexibilidade e controle total sobre os recursos.
+O uso inteligente e otimizado das instâncias traz redução de custos, alta disponibilidade e escalabilidade eficiente.
 
 ## ✨ Próximos Passos
 
