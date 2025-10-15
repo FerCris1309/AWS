@@ -1,4 +1,5 @@
 ☁️ Estudos AWS – Fernanda Cristina Cruz Onil
+
 🧠 Sobre este repositório
 
 Repositório criado para documentar meu aprendizado e práticas sobre Amazon Web Services (AWS) durante o programa Santander Code Girls – 2025, em parceria com a DIO.
@@ -6,6 +7,7 @@ Repositório criado para documentar meu aprendizado e práticas sobre Amazon Web
 Aqui registro meus resumos, anotações, exercícios e projetos práticos desenvolvidos em cada módulo do curso, com foco em entendimento técnico e aplicação prática.
 
 🗂️ Resumo dos Tópicos
+
 📖 1. Introdução à AWS e Conceitos Básicos
 
 História da Amazon e origem da AWS (2006).
@@ -45,6 +47,7 @@ Escalabilidade e flexibilidade: paga-se apenas pelo que é consumido.
 Serviços que vão de computação e armazenamento a Machine Learning, IoT e Analytics.
 
 🧩 4. Modelos de Serviço em Nuvem
+
 Modelo	Nome	Responsabilidade do Usuário	Exemplo
 IaaS	Infraestrutura como Serviço	Controle total sobre o ambiente	EC2, VPC
 PaaS	Plataforma como Serviço	AWS gerencia infraestrutura e SO	Elastic Beanstalk
@@ -62,7 +65,9 @@ Cada modelo oferece níveis distintos de controle, flexibilidade e responsabilid
 
 🎓 Ecossistema robusto de parceiros, certificações e treinamentos.
 
+
 ☁️ Computação em Nuvem com Amazon EC2
+
 📍 Módulo 2 – EC2: Elastic Compute Cloud
 
 Serviço que disponibiliza máquinas virtuais (instâncias) com Windows ou Linux.
