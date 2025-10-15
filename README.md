@@ -6,80 +6,53 @@ Os estudos atuais estão **baseados nas aulas, exemplos e desafios práticos** a
 
 Aqui organizo meus **resumos, anotações, exercícios e projetos práticos** realizados em cada módulo.
 
----
+## 🗂️ Resumo dos Tópicos – Visão Geral AWS
 
-## 🎯 Objetivos
-- Entender os **conceitos fundamentais da nuvem AWS**  
-- Conhecer os principais **serviços e casos de uso**  
-- Aplicar o aprendizado em **exercícios e desafios práticos**  
-- Desenvolver base sólida para avançar na trilha de certificações  
-- Conquistar a **certificação AWS Cloud Practitioner**
-
----
-
-## 📅 Progresso de Estudos
-
-| Módulo | Tema | Status | Observações |
-|:--|:--|:--:|:--|
-| 1 | Introdução à Nuvem AWS | ✅ Concluído | Conceitos, regiões e zonas de disponibilidade |
-| 2 | Computação na Nuvem | ⏳ Em andamento | EC2, Lambda, Elastic Beanstalk |
-| 3 | Armazenamento e Banco de Dados | ⏳ | S3, EBS, RDS, DynamoDB |
-| 4 | Rede e Entrega de Conteúdo | ⏳ | VPC, CloudFront, Route 53 |
-| 5 | Segurança e Gerenciamento | ⏳ | IAM, CloudWatch, CloudTrail |
-| 6 | Preços e Suporte | ⏳ | Billing, Cost Explorer, planos de suporte |
+### 📖 1. Introdução à AWS e Conceitos Básicos
+- História da **Amazon** e da criação da **AWS (2006)**.  
+- A AWS é a principal **provedora de serviços em nuvem** do mercado.  
+- Oferece mais de **200 serviços globais** que atendem desde startups até grandes corporações.  
+- Enfatiza o aprendizado “**hands-on**” (prático) para domínio das ferramentas.
 
 ---
 
-## 🧩 Serviços já estudados
-
-- **Amazon S3** – Armazenamento de objetos  
-  - Buckets possuem **nomes únicos globalmente**  
-  - **Bloqueio de acesso público** impede qualquer acesso externo  
-  - Políticas de bucket controlam permissões detalhadas  
-- **IAM** – Gerenciamento de identidade e acesso  
-- **Lambda** – Execução de código sem servidor  
-- **CloudWatch** – Monitoramento e alarmes  
-
----
-
-## 🧪 Questões e aprendizados práticos
-
-1. **Bucket público com bloqueio ativado:**  
-   ❌ Falso – Se o bloqueio de acesso público está ativado, o bucket **não pode ser acessado publicamente**.
-
-2. **Criar bucket com nome já existente:**  
-   🚫 A criação é **bloqueada**. É necessário **escolher outro nome**, pois os nomes de bucket são **únicos em toda a AWS**.
-
-3. **Exemplo prático:**  
-   - Criar um bucket S3  
-   - Enviar arquivo HTML  
-   - Tornar o conteúdo público (após desbloqueio manual)  
-   - Acessar o site estático hospedado diretamente pelo S3  
+### 🌍 2. Infraestrutura Global
+- A **infraestrutura da AWS** é composta por:
+  - **Regiões (Regions):** áreas geográficas que agrupam vários data centers.
+  - **Zonas de Disponibilidade (AZs):** data centers independentes, mas interligados para garantir alta disponibilidade.
+- Atualmente, a AWS possui:
+  - **33 regiões** e **105 zonas de disponibilidade**,  
+  - com planos para expansão em **Alemanha, Malásia, Nova Zelândia e Tailândia**.
+- Disponibiliza latência inferior a **10 milissegundos** em implantações locais.  
+- 🌐 Mais detalhes: [Infraestrutura Global AWS](https://aws.amazon.com/pt/about-aws/global-infrastructure)
 
 ---
 
-## 💻 Desafios e Projetos Práticos (do curso)
-
-- 🌐 **Hospedar site estático** no S3 + CloudFront  
-- ⚙️ Criar função **Lambda** integrada ao API Gateway  
-- 🔐 Configurar política de acesso **IAM** para usuários e grupos  
-- 📊 Monitorar instância **EC2** usando CloudWatch  
-
----
-
-## 📚 Fontes de Estudo
-
-- [Santander Code Girls 2025 – DIO](https://web.dio.me/)  
-
+### 💰 3. Modelo de Negócio da AWS
+- Baseado em **pagamento conforme o uso (Pay-as-you-go)**.  
+- Transição do modelo **CAPEX** (investimento em infraestrutura própria) para **OPEX** (custos operacionais sob demanda).  
+- Escalabilidade e flexibilidade: paga-se apenas pelos recursos utilizados.  
+- Oferece serviços desde **computação e armazenamento** até **Machine Learning, IoT e Analytics**.
 
 ---
 
-## 🏆 Meta de Certificação
+### 🧩 4. Modelos de Serviço em Nuvem
+| Modelo | Nome | Responsabilidade do Usuário | Exemplo |
+|:--|:--|:--|:--|
+| **IaaS** | Infraestrutura como Serviço | Controle total sobre o ambiente (ex: EC2, VPC) | EC2 |
+| **PaaS** | Plataforma como Serviço | A AWS gerencia a infraestrutura e o sistema operacional | Elastic Beanstalk |
+| **SaaS** | Software como Serviço | Usuário apenas utiliza a aplicação | Amazon Chime, WorkMail |
 
-📅 Início: **Maio/2025**  
-🎯 Meta: **Certificação AWS Cloud Practitioner até Dezembro/2025**
+Cada modelo oferece diferentes níveis de **controle, flexibilidade e responsabilidade**.
 
 ---
+
+### 🚀 5. Diferenciais da AWS
+- **Inovação constante** e atualização frequente de serviços.  
+- **Escalabilidade global** e segurança avançada.  
+- **Modelo flexível** que se adapta a qualquer porte de empresa.  
+- Ecossistema robusto de **parceiros, certificações e treinamentos**.
+
 
 ## ✨ Próximos Passos
 
