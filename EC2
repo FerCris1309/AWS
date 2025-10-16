@@ -1,0 +1,33 @@
+☁️ Computação em Nuvem com Amazon EC2
+
+📍EC2: Nuvem de Computação Elástica
+
+Serviço que disponibiliza máquinas virtuais (instâncias) com Windows ou Linux. Cada instância EC2 possui CPU, memória, disco, rede e sistema operacional. Classificado como IaaS — o usuário é responsável pelos dados, aplicativos e conexões.
+
+⚙️ Escolha da Instância
+
+A escolha correta garante eficiência, escalabilidade e economia.
+Baseia-se nas necessidades específicas de aplicação.
+🔐 Configuração e Segurança
+
+Uso de AMIs (Amazon Machine Images) no momento da criação.
+Controle de acesso via Grupos de Segurança (firewall), definindo portas, protocolos e IPs.
+💡 Otimização de Recursos na AWS
+
+Reduzir custos e aumentar o desempenho das soluções na nuvem.
+elevados = usar recursos de forma inteligente sem legado.
+⏸️ Boas Práticas
+
+Desligue instâncias não utilizadas (ambientes de teste/dev).
+Remove recursos ociosos, como volumes e IPs elásticos.
+📈 Escalabilidade
+
+Vertical: ajusta a capacidade (vCPU, RAM, disco) da instância.
+Horizontal: adicionar/remover instâncias conforme a demanda.
+💵 Modelos de Compra
+
+Tipo Descrição Ideal Para
+Sob Demanda Pagamento por hora Cargas irregulares e testes
+Reservadas Pagamento Fixo Anual com Desconto Uso Contínuo
+Spot Desconto de até 90%, mas pode ser interrompido Processos não críticos
+🚀 Conclusão O EC2 é a base da computação em nuvem da AWS. Usar instâncias de forma otimizada permite redução de custos, alta disponibilidade e escalabilidade eficiente.
