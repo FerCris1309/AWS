@@ -320,3 +320,102 @@ Você pode acompanhar o progresso na guia Eventos do seu Stack.
 O status mudará de CREATE_IN_PROGRESS para CREATE_COMPLETE.
 
 Após a conclusão, a guia Saídas (Outputs) mostrará os ARNs do Firewall e da Política.
+
+
+Ótimo! Para criar uma "stack" (pilha) no AWS CloudFormation, você precisa de um modelo (template) que defina os recursos da AWS que deseja provisionar (como VPCs, Lambdas, Firewalls, etc.).
+
+Vou mostrar o processo de criação de um stack básico, usando o console da AWS e um template simples que cria um Bucket S3.
+
+🏗️ Passo a Passo: Criar um Stack no AWS CloudFormation
+1. Preparar o Template (Modelo)
+O template define o que o CloudFormation deve construir. Usaremos YAML. Salve o conteúdo abaixo em um arquivo local chamado s3-bucket-template.yaml.
+
+YAML
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template simples para criar um Bucket S3
+
+Parameters:
+  BucketNamePrefix:
+    Type: String
+    Description: Prefixo para o nome unico do S3 Bucket.
+
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${BucketNamePrefix}-${AWS::Region}-${AWS::AccountId}"
+      AccessControl: Private
+      Tags:
+        - Key: Environment
+          Value: Dev
+        - Key: Project
+          Value: CloudFormationDemo
+
+Outputs:
+  BucketName:
+    Description: Nome final do S3 Bucket criado
+    Value: !Ref MyS3Bucket
+2. Acessar o Console CloudFormation
+Faça login no Console AWS e navegue até o serviço CloudFormation.
+
+Certifique-se de que a Região (no canto superior direito) está correta, pois o stack será criado nessa região.
+
+Na página Pilhas (Stacks), clique em Criar pilha e selecione Com novos recursos (padrão).
+
+3. Especificar Template
+Na tela Criar pilha:
+
+Pré-requisito - Preparar modelo: Selecione Modelo pronto.
+
+Especificar modelo: Selecione Fazer upload de um arquivo de modelo.
+
+Clique em Escolher arquivo e carregue o arquivo s3-bucket-template.yaml que você acabou de salvar.
+
+Clique em Próximo.
+
+[Imagem de onde fazer o upload do template no console do CloudFormation]
+
+4. Especificar Detalhes da Pilha
+Nesta tela, você fornece o nome da pilha e os valores para quaisquer parâmetros definidos no template.
+
+Nome da Pilha: Digite um nome para a sua pilha (ex: S3DemoStack).
+
+Parâmetros:
+
+BucketNamePrefix: Digite um prefixo para o nome do bucket (ex: meu-app-dados). O nome final será único.
+
+Clique em Próximo.
+
+5. Configurar Opções da Pilha (Opcional)
+Nesta etapa, você pode definir configurações avançadas, como tags para a pilha, políticas de notificação e reversão.
+
+Tags: Adicione tags se desejar (ex: Key: Owner, Value: SeuNome).
+
+Mantenha o restante das opções como padrão para este teste.
+
+Clique em Próximo.
+
+6. Revisar e Criar
+Esta é a tela de resumo.
+
+Revise o nome da pilha, os parâmetros e os recursos a serem criados.
+
+Na parte inferior, você verá a seção Capacidades. Como este template não cria recursos IAM, não é necessário marcar a caixa, mas para stacks mais complexos, verifique se a caixa Eu reconheço que o AWS CloudFormation pode criar recursos do IAM... está marcada.
+
+Clique em Enviar.
+
+7. Monitorar a Criação
+Você será redirecionado de volta para a lista de Pilhas.
+
+O status da sua nova pilha será CREATE_IN_PROGRESS.
+
+Clique no nome da pilha (S3DemoStack) e vá para a aba Eventos.
+
+Os eventos mostram o CloudFormation criando cada recurso. A criação de um Bucket S3 geralmente leva menos de um minuto.
+
+Quando o status mudar para CREATE_COMPLETE, o recurso foi criado com sucesso.
+
+Vá para a aba Recursos para ver o ARN e o ID do Bucket S3 criado.
+
+Vá para a aba Saídas (Outputs) para ver o nome final do bucket.
