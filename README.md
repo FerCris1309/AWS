@@ -173,3 +173,150 @@ JSON
   "body": "{\"message\":\"Olá, Usuário Step Functions, da Step Function!\"}",
   "greeting": "Olá, Usuário Step Functions, da Step Function!"
 }
+
+
+🏗️ Template CloudFormation (YAML) para AWS Network Firewall
+Este template assume que você já possui uma VPC com pelo menos duas Sub-redes em diferentes Zonas de Disponibilidade (AZs), sendo que uma será usada para o endpoint do firewall (a sub-rede de firewall).
+
+YAML
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS Network Firewall Stack com Politica e Grupo de Regras Stateless Basico
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: O ID da VPC onde o firewall sera implantado.
+  FirewallSubnetA:
+    Type: AWS::EC2::Subnet::Id
+    Description: O ID da Sub-rede (AZ A) para o endpoint do Network Firewall.
+  FirewallSubnetB:
+    Type: AWS::EC2::Subnet::Id
+    Description: O ID da Sub-rede (AZ B) para o endpoint do Network Firewall.
+
+Resources:
+  # 1. Grupo de Regras Stateless (Regras basicas para o trafego de entrada)
+  BasicStatelessRuleGroup:
+    Type: AWS::NetworkFirewall::RuleGroup
+    Properties:
+      RuleGroupName: Basic-Stateless-Allow-All
+      Capacity: 100
+      Type: STATELESS
+      Description: Permite todo o trafego Stateless por padrao (ajustar conforme necessidade).
+      RuleGroup:
+        RulesSource:
+          StatelessRulesAndCustomActions:
+            StatelessRules:
+              - Priority: 1
+                RuleDefinition:
+                  Actions:
+                    - PASS
+                  MatchAttributes:
+                    Sources: # Qualquer origem
+                      - AddressDefinition: 0.0.0.0/0
+                    Destinations: # Qualquer destino
+                      - AddressDefinition: 0.0.0.0/0
+                    Protocols:
+                      - 6 # TCP
+                      - 17 # UDP
+                      - 1 # ICMP
+        StatelessDefaultActions:
+          - AWS_DROP
+          - FORWARD_TO_STATEFUL
+
+  # 2. Politica de Firewall
+  FirewallPolicy:
+    Type: AWS::NetworkFirewall::FirewallPolicy
+    Properties:
+      FirewallPolicyName: Basic-Firewall-Policy
+      FirewallPolicy:
+        StatelessDefaultActions:
+          - AWS_DROP
+          - FORWARD_TO_STATEFUL # Encaminha para o motor stateful
+        StatelessFragmentDefaultActions:
+          - AWS_DROP
+        StatelessRuleGroupReferences:
+          - Priority: 1
+            ResourceArn: !GetAtt BasicStatelessRuleGroup.RuleGroupArn # Referencia o grupo de regras acima
+        StatefulEngineOptions:
+          RuleOrder: DEFAULT # Ou STRICT_ORDER
+        StatefulDefaultActions:
+          - PASS # Permite todo o trafego stateful por padrao (ajustar conforme necessidade)
+
+  # 3. Recurso Firewall
+  NetworkFirewall:
+    Type: AWS::NetworkFirewall::Firewall
+    Properties:
+      FirewallName: MyManagedFirewall
+      VpcId: !Ref VpcId
+      FirewallPolicyArn: !GetAtt FirewallPolicy.FirewallPolicyArn
+      DeleteProtection: true # Protege contra exclusao acidental
+      SubnetMappings:
+        - SubnetId: !Ref FirewallSubnetA
+        - SubnetId: !Ref FirewallSubnetB
+
+Outputs:
+  FirewallArn:
+    Description: ARN do AWS Network Firewall criado
+    Value: !Ref NetworkFirewall
+    Export:
+      Name: !Sub "${AWS::StackName}-FirewallArn"
+  FirewallPolicyArn:
+    Description: ARN da Politica de Firewall criada
+    Value: !Ref FirewallPolicy
+    Export:
+      Name: !Sub "${AWS::StackName}-FirewallPolicyArn"
+📋 Passo a Passo para Criar o Stack
+Para executar este template, você usará o console do CloudFormation:
+
+Passo 1: Preparar o Template
+Salve o código YAML acima em um arquivo chamado network-firewall-template.yaml.
+
+Pré-requisito: Certifique-se de ter os IDs da VPC e das duas Sub-redes de firewall (uma por AZ) onde você deseja implantar os endpoints do Network Firewall.
+
+Passo 2: Criar o Stack no Console AWS
+Acesse o Console AWS e navegue até CloudFormation.
+
+Clique em Criar stack e selecione Com novos recursos (padrão).
+
+Especificar template:
+
+Selecione Fazer upload de um arquivo de template.
+
+Clique em Escolher arquivo e carregue o arquivo network-firewall-template.yaml.
+
+Clique em Próximo.
+
+Passo 3: Especificar Detalhes do Stack
+Nome do Stack: Digite um nome (ex: MeuFirewallStack).
+
+Parâmetros: Preencha os valores para os parâmetros que definimos:
+
+VpcId: O ID da sua VPC (ex: vpc-0abcdef1234567890).
+
+FirewallSubnetA: O ID da primeira sub-rede de firewall (ex: subnet-0a1b2c3d4e5f6a7b8).
+
+FirewallSubnetB: O ID da segunda sub-rede de firewall (ex: subnet-0b2c3d4e5f6a7b8c9).
+
+Clique em Próximo.
+
+Passo 4: Configurar Opções do Stack (Opcional)
+Nesta página, você pode configurar tags, IAM role, ou proteções de término (termination protection).
+
+Mantenha as configurações padrão por enquanto e clique em Próximo.
+
+Passo 5: Revisar e Criar
+Revise todas as configurações.
+
+Na parte inferior, marque a caixa: Eu reconheço que o AWS CloudFormation pode criar recursos do IAM com nomes personalizados. (Embora este template não crie um IAM role, é uma boa prática marcar para templates mais complexos).
+
+Clique em Enviar.
+
+Passo 6: Monitorar e Concluir
+O CloudFormation começará a criar os recursos (Grupo de Regras, Política e Firewall).
+
+Você pode acompanhar o progresso na guia Eventos do seu Stack.
+
+O status mudará de CREATE_IN_PROGRESS para CREATE_COMPLETE.
+
+Após a conclusão, a guia Saídas (Outputs) mostrará os ARNs do Firewall e da Política.
