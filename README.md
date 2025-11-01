@@ -419,3 +419,131 @@ Quando o status mudar para CREATE_COMPLETE, o recurso foi criado com sucesso.
 Vá para a aba Recursos para ver o ARN e o ID do Bucket S3 criado.
 
 Vá para a aba Saídas (Outputs) para ver o nome final do bucket.
+
+
+⚙️ Cenário: Executar tarefas automatizadas com Lambda e S3
+
+A integração entre AWS Lambda e Amazon S3 é uma das formas mais comuns de automatizar tarefas sem precisar de servidores.
+Exemplo clássico:
+
+"Quando um arquivo for enviado para o bucket S3, o Lambda é executado automaticamente para processar o arquivo."
+
+🧭 Arquitetura básica
+
+1️⃣ Usuário ou sistema envia um arquivo para o S3
+
+Ex: upload de dados.csv no bucket meu-bucket-processamento.
+
+2️⃣ Evento do S3 aciona o Lambda automaticamente
+
+O S3 detecta o novo arquivo e envia o evento JSON para a função Lambda.
+
+3️⃣ Lambda processa o arquivo
+
+Pode ler, validar, mover, extrair dados, compactar, ou salvar resultados em outro bucket ou banco (DynamoDB, RDS, etc.).
+
+4️⃣ (Opcional) Step Functions orquestra várias Lambdas
+
+Ex: Lambda 1 → valida o arquivo
+Lambda 2 → processa
+Lambda 3 → grava resultado
+
+🧱 Etapas para configurar
+1️⃣ Criar um bucket S3
+
+Vá para Amazon S3 → Create bucket
+
+Dê um nome, por exemplo: meu-bucket-lambda-demo
+
+Clique em Create bucket
+
+2️⃣ Criar a função Lambda
+
+Vá em AWS Lambda → Create function
+
+Escolha Author from scratch
+
+Nome: ProcessarArquivoS3
+
+Runtime: Python 3.12 (ou Node.js)
+
+Clique em Create function
+
+3️⃣ Adicionar o gatilho do S3
+
+Na página da função Lambda:
+
+Abaixo de “Function overview”, clique em “+ Add trigger”
+
+Escolha S3
+
+Configure:
+
+Bucket: meu-bucket-lambda-demo
+
+Event type: All object create events
+
+Prefix/Suffix: (opcional) exemplo: uploads/ ou .csv
+
+Marque “Enable trigger”
+
+Clique em Add
+
+Pronto! Agora o Lambda executa sempre que um arquivo novo for criado no bucket.
+
+4️⃣ Adicionar o código
+
+Exemplo em Python para ler o nome do arquivo enviado:
+
+import json
+import boto3
+
+def lambda_handler(event, context):
+    # Captura informações do arquivo enviado
+    s3 = boto3.client('s3')
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = event['Records'][0]['s3']['object']['key']
+    
+    print(f"Arquivo recebido: s3://{bucket}/{key}")
+    
+    # Exemplo: ler o conteúdo
+    obj = s3.get_object(Bucket=bucket, Key=key)
+    conteudo = obj['Body'].read().decode('utf-8')
+    
+    print(f"Conteúdo:\n{conteudo}")
+    
+    # Retornar sucesso
+    return {
+        'statusCode': 200,
+        'body': json.dumps(f"Processado: {key}")
+    }
+
+5️⃣ Testar a automação
+
+Faça upload de um arquivo no bucket S3.
+
+Vá no CloudWatch Logs → verifique a execução do Lambda (mensagens, logs, conteúdo lido, etc.).
+
+6️⃣ (Opcional) Integrar com Step Functions
+
+Você pode criar um fluxo orquestrado, por exemplo:
+
+Step 1: esperar evento do S3
+
+Step 2: Lambda processa o arquivo
+
+Step 3: Lambda move o resultado para outro bucket
+
+Step 4: Lambda envia notificação por SNS
+
+🧩 Próximos passos
+
+Posso agora gerar imagens simulando as telas:
+
+Criação do bucket S3
+
+Criação da função Lambda
+
+Configuração do gatilho S3 → Lambda
+
+Fluxo visual no Step Functions (com os estados Lambda e S3)
